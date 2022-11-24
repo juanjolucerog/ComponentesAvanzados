@@ -11,6 +11,10 @@ export class MenuComponent implements OnInit, OnDestroy {
   title = 'Observatorio';
   ngOnDestroy(): void {}
   constructor(private router: Router) {}
+
+  irMenu() {
+    this.router.navigate(['Menu']);
+  }
   irReportes() {
     this.router.navigate(['Menu/Reportes']);
   }

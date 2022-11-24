@@ -14,11 +14,10 @@ import { MenuComponent } from './menu/menu.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReportesComponent } from './reportes/reportes.component';
 import { AlertasComponent } from './alertas/alertas.component';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { InicioComponent } from './inicio/inicio.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +38,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

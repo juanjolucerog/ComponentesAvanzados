@@ -1,22 +1,7 @@
-<!-- <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
-
-</mat-drawer-container>!-->
-
 <mat-toolbar>
-  <img class="logo-img" src="https://plataformaanticorrupcion.pe/wp-content/uploads/2017/07/logo_nuevo-2.png">
+  <button mat-button (click)="irMenu()">
+    <img class=" logo-img" src="https://plataformaanticorrupcion.pe/wp-content/uploads/2017/07/logo_nuevo-2.png">
+  </button>
   <a>
   </a>
   <button mat-button (click)="irReportes()">Modulo de Reportes</button>
