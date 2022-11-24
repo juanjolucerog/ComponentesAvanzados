@@ -16,6 +16,8 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDrawer } from '@angular/material/sidenav';
+import { InicioComponent } from './inicio/inicio.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatDrawer } from '@angular/material/sidenav';
     MenuComponent,
     ReportesComponent,
     AlertasComponent,
+    InicioComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

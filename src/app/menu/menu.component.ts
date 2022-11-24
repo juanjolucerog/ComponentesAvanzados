@@ -17,6 +17,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   irAlertas() {
     this.router.navigate(['Menu/Alertas']);
   }
+  irDashboard() {
+    this.router.navigate(['Menu/Dashboard']);
+  }
   cerrarSession() {
     this.router.navigate(['Login']);
   }
