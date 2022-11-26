@@ -51,7 +51,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule,
+    
+    
+    ,
     MatSelectModule
   ],
   providers: [],
