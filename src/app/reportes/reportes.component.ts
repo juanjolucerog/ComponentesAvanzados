@@ -22,18 +22,21 @@ export class ReportesComponent implements AfterViewInit {
     'sexo',
   ];
 
-  dataSource = new MatTableDataSource<RespuestaAlertas>();
-
   constructor(private http: HttpClient) {}
+  dataSource = new MatTableDataSource<RespuestaAlertas>();
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
   ngOnInit(): void {
+    this.getAlertas();
+  }
+  getAlertas() {
     this.http
       .get('http://localhost:8082/api-integrador/alertas')
       .subscribe((respuesta: any) => (this.dataSource = respuesta.data));
   }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
