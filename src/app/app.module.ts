@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { InicioComponent } from './inicio/inicio.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { IntegradorApiComponent } from './integrador-api/integrador-api.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AlertasComponent,
     InicioComponent,
     DashboardComponent,
+    IntegradorApiComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

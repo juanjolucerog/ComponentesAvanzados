@@ -1,40 +1,43 @@
 <app-menu>
 </app-menu>
-<div class="column1">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Cantidad de Alertas</mat-card-title>
-        <mat-card-subtitle>741</mat-card-subtitle>
-        <img mat-card-lg-image
-          src="https://pandorafms.com/blog/wp-content/uploads/2020/08/monitorizaci%C3%B3n-de-traps-SNMP-featured-1.jpg">
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      El Ministerio Publico Proactivamente envia alerta de a los diferentes fiscales encargados para el debido
-      seguimiento de los casos
-
-    </mat-card-content>
-  </mat-card>
-</div>
-<div class="column2">
-
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Medidas de Proteccion</mat-card-title>
-        <mat-card-subtitle>798</mat-card-subtitle>
+<div class="cuerpo-contenedor">
+  <div class="contenedor">
+    <mat-card class="mini-contenedor">
+      <div>
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Cantidad de Alertas ({{dataAlerta.length}})</mat-card-title>
+            <!-- <mat-card-subtitle>741</mat-card-subtitle> -->
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content class="content-text">
+          El Ministerio Publico Proactivamente envia alerta de a los diferentes fiscales encargados para el debido
+          seguimiento de los casos
+        </mat-card-content>
+      </div>
+      <img mat-card-lg-image
+        src="https://thumbs.dreamstime.com/b/icono-plano-del-vector-con-una-burbuja-y-un-mensaje-sos-80521652.jpg">
+    </mat-card>
+    <br>
+    <div class="contenedor">
+      <mat-card class="mini-contenedor">
+        <div>
+          <mat-card-header>
+            <mat-card-title-group>
+              <mat-card-title>Medidas de Proteccion ({{dataProteccion.length}})</mat-card-title>
+              <!-- <mat-card-subtitle>741</mat-card-subtitle> -->
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content class="content-text">
+            El objeto de las medidas de protección es contrarrestar o disminuir los efectos de la violencia ejercida por
+            el
+            denunciado; con el único fin de asegurar su integridad física, psicológica y sexual, o la de su familia,
+            proteger
+            y preservar sus bienes patrimoniales.
+          </mat-card-content>
+        </div>
         <img mat-card-lg-image
           src="https://observatorioviolencia.pe/wp-content/uploads/2019/02/medidas-de-proteccion-770x515.jpg">
-      </mat-card-title-group>
-    </mat-card-header>
-
-    <mat-card-content>
-      El objeto de las medidas de protección es contrarrestar o disminuir los efectos de la violencia ejercida por el
-      denunciado; con el único fin de asegurar su integridad física, psicológica y sexual, o la de su familia,
-      proteger
-      y preservar sus bienes patrimoniales.
-    </mat-card-content>
-  </mat-card>
-
-</div>
+      </mat-card>
+    </div>
+  </div>

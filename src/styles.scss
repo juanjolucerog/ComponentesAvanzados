@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+.container-fluid{
+  text-align: right;
+}
