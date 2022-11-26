@@ -1,0 +1,22 @@
+<h1 *ngIf="data.esAccion" mat-dialog-title>Acciones a tomar.</h1>
+<h1 *ngIf="!data.esAccion" mat-dialog-title>Medidas a tomar.</h1>
+<div mat-dialog-content>
+    <mat-form-field [style.width.%]="100">
+        <mat-form-field appearance="fill">
+            <mat-label *ngIf="data.esAccion">Tipo de accion</mat-label>
+            <mat-label *ngIf="!data.esAccion">Tipo de medida</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let option of data.dataSelect" [value]="option.id">
+                {{option.descripcion}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </mat-form-field>
+    <mat-form-field [style.width.%]="100">
+        <textarea matInput [(ngModel)]="data.detalle" cdkTextareaAutosize cdkAutosizeMinRows="5"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './menu/menu.component';
@@ -21,6 +21,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IntegradorApiComponent } from './integrador-api/integrador-api.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalRegisterAccionesComponent } from './modal-register-acciones/modal-register-acciones.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     InicioComponent,
     DashboardComponent,
     IntegradorApiComponent,
+    ModalRegisterAccionesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

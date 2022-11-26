@@ -1,39 +1,13 @@
 body {
-  padding-top: 50px;
   padding-left: 50px;
   padding-right: 50px;
 
 }
-mat-card{
-  min-height: 40%;
-  width: auto;
+
+table {
+  width:90%;
 }
 
-.contenedor{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  text-align: justify;
-}
-.example-card{
-  max-width: 600px;
-  max-height: 400px;
-}
-.mini-contenedor{
-  display: flex;
-  flex-direction: row-reverse ;
-  flex-wrap: nowrap;
-  max-width: 600px;
-  max-height: auto;
-  align-items: center
-}
-.mat-card-lg-image{
-  padding-top: 10px;
-  padding-left: 100px;
-  padding-right: 10px;
-}
-
-.cuerpo-contenedor{
-  justify-content: center;
-
+mat-cell {
+  height: 50px;
 }
