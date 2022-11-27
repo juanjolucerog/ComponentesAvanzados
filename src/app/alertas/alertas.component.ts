@@ -1,9 +1,9 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalRegisterAccionesComponent } from '../modal-register-acciones/modal-register-acciones.component';
+import { Component, AfterViewInit, ViewChild } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalRegisterAccionesComponent } from "../modal-register-acciones/modal-register-acciones.component";
 
 export interface RequestListaAlertas {
   idAlerta: number;
@@ -23,9 +23,9 @@ export interface ISelect {
 }
 
 @Component({
-  selector: 'app-alertas',
-  templateUrl: './alertas.component.html',
-  styleUrls: ['./alertas.component.scss']
+  selector: "app-alertas",
+  templateUrl: "./alertas.component.html",
+  styleUrls: ["./alertas.component.scss"],
 })
 export class AlertasComponent {
   @ViewChild(MatPaginator)
@@ -42,35 +42,34 @@ export class AlertasComponent {
     "nombreAgraviado",
     "nombreImputado",
     "sexo",
-    "descripcionEstado"
+    "descripcionEstado",
   ];
-  dataAccion:ISelect[] = [];
-  dataMedida:ISelect[] = [];
+  dataAccion: ISelect[] = [];
+  dataMedida: ISelect[] = [];
 
-  constructor(private http: HttpClient, 
-    public dialog: MatDialog) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
     this.http
-      .get('http://localhost:8082/api-integrador/alertas/accion')
+      .get("http://172.16.60.98:7007/api-integrador/alertas/accion")
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           let data = [];
-          respuesta.data.forEach(element => {
+          respuesta.data.forEach((element) => {
             this.dataAccion.push({
               id: element.idAccionAlerta,
-              descripcion: element.descripcion
+              descripcion: element.descripcion,
             });
           });
         }
       });
 
-      this.http
-      .get('http://localhost:8082/api-integrador/alertas/proteccion')
+    this.http
+      .get("http://172.16.60.98:7007/api-integrador/alertas/proteccion")
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
-          respuesta.data.forEach(element => {
+          respuesta.data.forEach((element) => {
             this.dataMedida.push({
               id: element.idProteccionAlerta,
-              descripcion: element.descripcion
+              descripcion: element.descripcion,
             });
           });
         }
@@ -84,7 +83,7 @@ export class AlertasComponent {
   }
   getAlertas() {
     this.http
-      .get('http://localhost:8082/api-integrador/alertas')
+      .get("http://172.16.60.98:7007/api-integrador/alertas")
       .subscribe((respuesta: any) => (this.dataSource = respuesta.data));
   }
 
@@ -92,37 +91,40 @@ export class AlertasComponent {
     this.dataSource.paginator = this.paginator;
   }
 
-  onClickAccion(alertaID:number): void {
+  onClickAccion(alertaID: number): void {
     console.log(this.dataAccion);
     console.log(this.dataMedida);
 
     const now = new Date();
 
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
-      width: '500px',
+      width: "500px",
       data: {
         esAccion: true,
         alertaID: alertaID,
         tipoAccionMedida: 0,
         detalle: "",
-        dataSelect: this.dataAccion
-      }
+        dataSelect: this.dataAccion,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
         let data = {
-          "idAlerta": result.alertaID,
-          "idAccion": result.tipoAccionMedida,
-          "detalleAccion": result.detalle,
-          "idMedidaProteccion": 0,
-          "detalleMedidaProteccion": null,
-          "usuarioRegistro": "demo",
-          "fechaRegistro": now.toLocaleDateString()
+          idAlerta: result.alertaID,
+          idAccion: result.tipoAccionMedida,
+          detalleAccion: result.detalle,
+          idMedidaProteccion: 0,
+          detalleMedidaProteccion: null,
+          usuarioRegistro: "demo",
+          fechaRegistro: now.toLocaleDateString(),
         };
 
         this.http
-          .post("http://localhost:8082/api-integrador/alertas/accion-proteccion", data)
+          .post(
+            "http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion",
+            data
+          )
           .subscribe((respuesta: any) => {
             this.getAlertas();
           });
@@ -130,34 +132,37 @@ export class AlertasComponent {
     });
   }
 
-  onClickMedida(alertaID:string){
+  onClickMedida(alertaID: string) {
     const now = new Date();
-    
+
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
-      width: '500px',
+      width: "500px",
       data: {
         esAccion: false,
         alertaID: alertaID,
         tipoAccionMedida: 0,
         detalle: "",
-        dataSelect: this.dataMedida
-      }
+        dataSelect: this.dataMedida,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result != undefined) {
         let data = {
-          "idAlerta": result.alertaID,
+          idAlerta: result.alertaID,
           // "idAccion": 0,
           // "detalleAccion": null,
-          "idMedidaProteccion": result.tipoAccionMedida,
-          "detalleMedidaProteccion": result.detalle,
-          "usuarioRegistro": "demo",
-          "fechaRegistro": now.toLocaleDateString()
+          idMedidaProteccion: result.tipoAccionMedida,
+          detalleMedidaProteccion: result.detalle,
+          usuarioRegistro: "demo",
+          fechaRegistro: now.toLocaleDateString(),
         };
 
         this.http
-          .post("http://localhost:8082/api-integrador/alertas/accion-proteccion", data)
+          .post(
+            "http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion",
+            data
+          )
           .subscribe((respuesta: any) => {
             this.getAlertas();
           });

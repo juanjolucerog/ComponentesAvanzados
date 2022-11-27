@@ -1,26 +1,26 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { RespuestaAlertas } from '../_interfaces/respuesta-alertas';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import { HttpClient } from "@angular/common/http";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
+import { RespuestaAlertas } from "../_interfaces/respuesta-alertas";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 @Component({
-  selector: 'app-reportes',
-  templateUrl: './reportes.component.html',
-  styleUrls: ['./reportes.component.scss'],
+  selector: "app-reportes",
+  templateUrl: "./reportes.component.html",
+  styleUrls: ["./reportes.component.scss"],
 })
 export class ReportesComponent {
   displayedColumns: string[] = [
-    'idAlerta',
-    'juridiccion',
-    'dependenciaMPub',
-    'dependenciaPol',
-    'caso',
-    'fechaIngreso',
-    'nombreAgraviado',
-    'nombreImputado',
-    'sexo',
+    "idAlerta",
+    "juridiccion",
+    "dependenciaMPub",
+    "dependenciaPol",
+    "caso",
+    "fechaIngreso",
+    "nombreAgraviado",
+    "nombreImputado",
+    "sexo",
   ];
   ArrayData: RespuestaAlertas[] = [];
   constructor(private http: HttpClient) {}
@@ -35,7 +35,7 @@ export class ReportesComponent {
   }
   getAlertas() {
     this.http
-      .get('http://localhost:8082/api-integrador/alertas')
+      .get("http://172.16.60.98:7007/api-integrador/alertas")
       .subscribe((respuesta: any) => {
         this.ArrayData = respuesta.data;
         this.dataSource = new MatTableDataSource<RespuestaAlertas>(
@@ -51,15 +51,15 @@ export class ReportesComponent {
 
   downloadPdf() {
     const doc = new jsPDF();
-    autoTable(doc, { html: '#ReporteAlertas' });
+    autoTable(doc, { html: "#ReporteAlertas" });
     let date: Date = new Date();
 
     doc.save(
-      'Reporte de Alertas ' +
+      "Reporte de Alertas " +
         this.ArrayData.length +
-        ' registros, descargado ' +
+        " registros, descargado " +
         date.toLocaleString() +
-        ' .pdf'
+        " .pdf"
     );
   }
 }
