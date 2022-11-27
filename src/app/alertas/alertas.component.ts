@@ -1,9 +1,9 @@
-import { Component, AfterViewInit, ViewChild } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatDialog } from "@angular/material/dialog";
-import { ModalRegisterAccionesComponent } from "../modal-register-acciones/modal-register-acciones.component";
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRegisterAccionesComponent } from '../modal-register-acciones/modal-register-acciones.component';
 
 export interface RequestListaAlertas {
   idAlerta: number;
@@ -23,33 +23,33 @@ export interface ISelect {
 }
 
 @Component({
-  selector: "app-alertas",
-  templateUrl: "./alertas.component.html",
-  styleUrls: ["./alertas.component.scss"],
+  selector: 'app-alertas',
+  templateUrl: './alertas.component.html',
+  styleUrls: ['./alertas.component.scss'],
 })
 export class AlertasComponent {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   displayedColumns: string[] = [
-    "idAlerta",
-    "nombresFiscal",
-    "detalleDelito",
-    "juridiccion",
-    "dependenciaMPub",
-    "dependenciaPol",
-    "caso",
-    "fechaIngreso",
-    "nombreAgraviado",
-    "nombreImputado",
-    "sexo",
-    "descripcionEstado",
+    'idAlerta',
+    'nombresFiscal',
+    'detalleDelito',
+    'juridiccion',
+    'dependenciaMPub',
+    'dependenciaPol',
+    'caso',
+    'fechaIngreso',
+    'nombreAgraviado',
+    'nombreImputado',
+    'sexo',
+    'descripcionEstado',
   ];
   dataAccion: ISelect[] = [];
   dataMedida: ISelect[] = [];
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
     this.http
-      .get("http://172.16.60.98:7007/api-integrador/alertas/accion")
+      .get('http://172.16.60.98:7007/api-integrador/alertas/accion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           let data = [];
@@ -63,7 +63,7 @@ export class AlertasComponent {
       });
 
     this.http
-      .get("http://172.16.60.98:7007/api-integrador/alertas/proteccion")
+      .get('http://172.16.60.98:7007/api-integrador/alertas/proteccion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           respuesta.data.forEach((element) => {
@@ -83,7 +83,7 @@ export class AlertasComponent {
   }
   getAlertas() {
     this.http
-      .get("http://172.16.60.98:7007/api-integrador/alertas")
+      .get('http://172.16.60.98:7007/api-integrador/alertas')
       .subscribe((respuesta: any) => (this.dataSource = respuesta.data));
   }
 
@@ -98,12 +98,12 @@ export class AlertasComponent {
     const now = new Date();
 
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
-      width: "500px",
+      width: '500px',
       data: {
         esAccion: true,
         alertaID: alertaID,
         tipoAccionMedida: 0,
-        detalle: "",
+        detalle: '',
         dataSelect: this.dataAccion,
       },
     });
@@ -116,13 +116,13 @@ export class AlertasComponent {
           detalleAccion: result.detalle,
           idMedidaProteccion: 0,
           detalleMedidaProteccion: null,
-          usuarioRegistro: "demo",
+          usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
 
         this.http
           .post(
-            "http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion",
+            'http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion',
             data
           )
           .subscribe((respuesta: any) => {
@@ -136,12 +136,12 @@ export class AlertasComponent {
     const now = new Date();
 
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
-      width: "500px",
+      width: '500px',
       data: {
         esAccion: false,
         alertaID: alertaID,
         tipoAccionMedida: 0,
-        detalle: "",
+        detalle: '',
         dataSelect: this.dataMedida,
       },
     });
@@ -154,13 +154,13 @@ export class AlertasComponent {
           // "detalleAccion": null,
           idMedidaProteccion: result.tipoAccionMedida,
           detalleMedidaProteccion: result.detalle,
-          usuarioRegistro: "demo",
+          usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
 
         this.http
           .post(
-            "http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion",
+            'http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion',
             data
           )
           .subscribe((respuesta: any) => {
