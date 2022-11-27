@@ -1,49 +1,82 @@
-<app-menu>
-</app-menu>
-<div class="cuerpo-contenedor">
-  <div class="contenedor">
-    <mat-card class="mini-contenedor">
-      <div>
-        <mat-card-header>
-          <mat-card-title-group>
-            <mat-card-title>WhatsApp</mat-card-title>
-          </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content class="content-text">
-          Llevamos la cuenta de las alertas entregadas por WhatsApp, click aquí si quieres ver el detalle
-        </mat-card-content>
-      </div>
-      <img mat-card-lg-image src="https://assets.mofoprod.net/network/images/whatsapp_logo.original.jpg">
-    </mat-card>
-  </div> <br>
-  <div class="contenedor">
-    <mat-card class="mini-contenedor">
-      <div>
-        <mat-card-header>
-          <mat-card-title-group>
-            <mat-card-title>Correo</mat-card-title>
-          </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content class="content-text">
-          Llevamos la cuenta de las alertas entregadas por Correo, click aquí si quieres ver el detalle
-        </mat-card-content>
-      </div>
-      <img mat-card-lg-image src="assets\data\correo-electronico.png">
-    </mat-card>
-  </div><br>
-  <div class="contenedor">
-    <mat-card class="mini-contenedor">
-      <div>
-        <mat-card-header>
-          <mat-card-title-group>
-            <mat-card-title>Mensaje de Texto</mat-card-title>
-          </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content class="content-text">
-          Llevamos la cuenta de las alertas entregadas por Mensaje de Texto, click aquí si quieres ver el detalle
-        </mat-card-content>
-      </div>
-      <img mat-card-lg-image src="assets\data\mensaje-texto.png">
-    </mat-card>
-  </div>
-</div>
+<app-menu> </app-menu>
+
+<body>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="nombresFiscal">
+      <th mat-header-cell *matHeaderCellDef>Fiscal</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombresFiscal}} </td>
+    </ng-container>
+    <ng-container matColumnDef="detalleDelito">
+      <th mat-header-cell *matHeaderCellDef>Delito</th>
+      <td mat-cell *matCellDef="let element"> {{element.detalleDelito}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="juridiccion">
+      <th mat-header-cell *matHeaderCellDef> Juridiccion. </th>
+      <td mat-cell *matCellDef="let element"> {{element.juridiccion}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="dependenciaMPub">
+      <th mat-header-cell *matHeaderCellDef> Fiscalia </th>
+      <td mat-cell *matCellDef="let element"> {{element.dependenciaMPub}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="dependenciaPol">
+      <th mat-header-cell *matHeaderCellDef> Comisaria </th>
+      <td mat-cell *matCellDef="let element"> {{element.dependenciaPol}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="caso">
+      <th mat-header-cell *matHeaderCellDef> Caso </th>
+      <td mat-cell *matCellDef="let element"> {{element.caso}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fechaIngreso">
+      <th mat-header-cell *matHeaderCellDef> Fecha de ingreso </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nombreAgraviado">
+      <th mat-header-cell *matHeaderCellDef> Agraviado </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreAgraviado}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nombreImputado">
+      <th mat-header-cell *matHeaderCellDef> Imputado </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreImputado}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="sexo">
+      <th mat-header-cell *matHeaderCellDef> Sexo </th>
+      <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcionEstado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcionEstado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idAlerta">
+      <th mat-header-cell *matHeaderCellDef>Agregar</th>
+
+      <mat-cell *matCellDef="let element">
+        <button mat-button mat-raised-button color="warn" (click)="onClickAccion(element.idAlerta)">Accion</button>
+        <button mat-button mat-raised-button (click)="onClickMedida(element.idAlerta)">Medida</button>
+      </mat-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</body>
