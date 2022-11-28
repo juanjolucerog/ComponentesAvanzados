@@ -43,7 +43,7 @@ export class AlertasComponent {
     'nombreAgraviado',
     'nombreImputado',
     'sexo',
-    'descripcionEstado',
+    'idEstado'
   ];
   dataAccion: ISelect[] = [];
   dataMedida: ISelect[] = [];
