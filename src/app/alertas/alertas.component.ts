@@ -99,9 +99,6 @@ export class AlertasComponent {
   }
 
   onClickAccion(alertaID: number): void {
-    console.log(this.dataAccion);
-    console.log(this.dataMedida);
-
     const now = new Date();
 
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
