@@ -28,6 +28,7 @@ export interface ISelect {
   styleUrls: ['./alertas.component.scss'],
 })
 export class AlertasComponent {
+  ArrayData: RequestListaAlertas[] = [];
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   displayedColumns: string[] = [
@@ -84,7 +85,13 @@ export class AlertasComponent {
   getAlertas() {
     this.http
       .get('http://172.16.60.98:7007/api-integrador/alertas')
-      .subscribe((respuesta: any) => (this.dataSource = respuesta.data));
+      .subscribe((respuesta: any) => {
+        this.ArrayData = respuesta.data;
+        this.dataSource = new MatTableDataSource<RequestListaAlertas>(
+          this.ArrayData
+        );
+        this.dataSource.paginator = this.paginator;
+      });
   }
 
   ngAfterViewInit() {
@@ -92,9 +99,6 @@ export class AlertasComponent {
   }
 
   onClickAccion(alertaID: number): void {
-    console.log(this.dataAccion);
-    console.log(this.dataMedida);
-
     const now = new Date();
 
     const dialogRef = this.dialog.open(ModalRegisterAccionesComponent, {
@@ -114,7 +118,7 @@ export class AlertasComponent {
           idAlerta: result.alertaID,
           idAccion: result.tipoAccionMedida,
           detalleAccion: result.detalle,
-          idMedidaProteccion: 0,
+          idMedidaProteccion: null,
           detalleMedidaProteccion: null,
           usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
@@ -150,8 +154,8 @@ export class AlertasComponent {
       if (result != undefined) {
         let data = {
           idAlerta: result.alertaID,
-          // "idAccion": 0,
-          // "detalleAccion": null,
+          idAccion: null,
+          detalleAccion: null,
           idMedidaProteccion: result.tipoAccionMedida,
           detalleMedidaProteccion: result.detalle,
           usuarioRegistro: 'demo',
