@@ -43,7 +43,7 @@ export class AlertasComponent {
     'nombreAgraviado',
     'nombreImputado',
     'sexo',
-    'descripcionEstado',
+    'idEstado'
   ];
   dataAccion: ISelect[] = [];
   dataMedida: ISelect[] = [];
@@ -131,6 +131,7 @@ export class AlertasComponent {
           )
           .subscribe((respuesta: any) => {
             this.getAlertas();
+            alert("Se grabo con exito.");
           });
       }
     });
@@ -169,6 +170,7 @@ export class AlertasComponent {
           )
           .subscribe((respuesta: any) => {
             this.getAlertas();
+            alert("Se grabo con exito.");
           });
       }
     });
