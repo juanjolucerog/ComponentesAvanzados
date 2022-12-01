@@ -24,9 +24,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Running Dockerfile
 
-Run `ng build --configuration production` to generate folder dist.
-Run `docker build -t ng-mp-app .` to build image in docker.
-Run `docker run -it --rm -p 9000:80 ng-mp-app`  to run website with 9000 port.
+1. Run `ng build --configuration production` to generate folder dist.
+2. Run `docker build -t ng-mp-app .` to build image in docker.
+3. Run `docker run -it --rm -p 9000:80 ng-mp-app`  to run website with 9000 port.
 
 ## Further help
 
